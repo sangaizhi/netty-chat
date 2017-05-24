@@ -19,6 +19,22 @@ import org.sangaizhi.nettychat.core.model.Response;
 public class ResponseEncoder extends MessageToByteEncoder<Response> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Response response, ByteBuf byteBuf) throws Exception {
+        System.out.println("返回请求:" + "module:" +response.getModule() +" cmd:" + response.getCommand() + " resultCode:" + response.getResultCode());
 
+        //包头
+        byteBuf.writeInt(Constants.HEADER_FLAG);
+        //module和cmd
+        byteBuf.writeShort(response.getModule());
+        byteBuf.writeShort(response.getCommand());
+        //结果码
+        byteBuf.writeInt(response.getResultCode());
+        //长度
+        int lenth = response.getData()==null? 0 : response.getData().length;
+        if(lenth <= 0){
+            byteBuf.writeInt(lenth);
+        }else{
+            byteBuf.writeInt(lenth);
+            byteBuf.writeBytes(response.getData());
+        }
     }
 }

@@ -29,17 +29,17 @@ public interface ResultCode {
     /**
      * 玩家名或密码不能为空
      */
-    int PLAYERNAME_NULL = 4;
+    int USER_NAME_NULL = 4;
 
     /**
      * 玩家名已使用
      */
-    int PLAYER_EXIST = 5;
+    int USER_EXIST = 5;
 
     /**
      * 玩家不存在
      */
-    int PLAYER_NO_EXIST = 6;
+    int USER_NO_EXIST = 6;
 
     /**
      * 密码错误
@@ -59,7 +59,7 @@ public interface ResultCode {
     /**
      * 玩家不在线
      */
-    int PLAYER_NO_ONLINE = 10;
+    int USER_NO_ONLINE = 10;
 
     /**
      * 请先登录

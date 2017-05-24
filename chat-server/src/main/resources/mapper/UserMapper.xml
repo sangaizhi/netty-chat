@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sangaizhi.nettychat.server.module.dao.UserDao">
+
+    <select id="getById" resultType="org.sangaizhi.nettychat.server.module.entity.User">
+        SELECT
+          id as userId,
+          name as userName,
+          password as password
+        WHERE id = #{userId}
+    </select>
+
+    <select id="getByName" resultType="org.sangaizhi.nettychat.server.module.entity.User">
+         SELECT
+          id as userId,
+          name as userName,
+          password as password
+        WHERE name = #{name} limit 0,1
+    </select>
+
+    <insert id="saveUser" keyColumn="id" useGeneratedKeys="true">
+        INSERT INTO t_user (name, password){
+        #{name},#{password}
+        }
+    </insert>
+
+</mapper>

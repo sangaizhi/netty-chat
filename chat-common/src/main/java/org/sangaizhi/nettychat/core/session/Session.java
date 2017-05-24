@@ -15,7 +15,7 @@ public interface Session {
     /**
      * 绑定会话对象
      */
-    void setAttachment();
+    void setAttachment(Object attachment);
 
     /**
      * 移除会话绑定对象
